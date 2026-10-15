@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Arena PC Bridge</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="head">
+      <img src="../icons/icon48.png" alt="" width="28" height="28" />
+      <div class="head-text">
+        <strong>Arena PC Bridge</strong>
+        <span id="version">Version …</span>
+      </div>
+      <span class="badge" id="badge">prüfe …</span>
+    </header>
+
+    <section class="card">
+      <div class="row">
+        <span class="row-label">PC-Zugriff</span>
+        <label class="switch">
+          <input type="checkbox" id="enabled" />
+          <span class="slider"></span>
+          <span class="switch-text" id="enabledText">AUS</span>
+        </label>
+      </div>
+      <p class="hint">
+        Der gleiche Schalter erscheint unter der Chat-Eingabe auf
+        <a href="https://arena.ai" target="_blank" rel="noreferrer">arena.ai</a>.
+      </p>
+      <div class="row">
+        <span class="row-label">Brücke</span>
+        <code id="bridgeUrl">http://127.0.0.1:8765</code>
+      </div>
+      <div class="row">
+        <span class="row-label">Port</span>
+        <input type="number" id="port" min="1024" max="65535" step="1" />
+        <button type="button" id="savePort" class="mini">setzen</button>
+        <button type="button" id="check" class="mini">testen</button>
+      </div>
+      <p class="hint" id="bridgeMessage">Noch nicht geprüft.</p>
+      <button type="button" id="openConnectTab" class="primary">Verbindungs-Tab öffnen (Brücke erlauben)</button>
+    </section>
+
+    <section class="card">
+      <div class="card-title">Was darf Arena auf dem PC?</div>
+      <label class="check"><input type="checkbox" id="allowRead" /><span><b>Dateien lesen</b><small>Ordner auflisten, Dateien lesen, durchsuchen</small></span></label>
+      <label class="check"><input type="checkbox" id="allowWrite" /><span><b>Dateien schreiben</b><small>Neue Dateien anlegen, Texte speichern</small></span></label>
+      <label class="check"><input type="checkbox" id="allowCommands" /><span><b>Befehle ausführen</b><small>PowerShell/cmd, z. B. git, winget, python</small></span></label>
+      <p class="hint warn">
+        Änderungen an Freigaben gelten sofort in der Extension – der Starter liest sie bei jedem Aufruf neu.
+      </p>
+    </section>
+
+    <section class="card">
+      <div class="card-title">
+        Werkzeuge <span class="muted" id="toolCount"></span>
+      </div>
+      <ul class="tools" id="tools"></ul>
+    </section>
+
+    <section class="card">
+      <div class="card-title">Letzte Aufrufe</div>
+      <ul class="history" id="history"></ul>
+      <button type="button" id="clearHistory" class="mini">Verlauf löschen</button>
+    </section>
+
+    <footer class="foot">
+      <button type="button" id="guide" class="mini">Einrichtung &amp; Fehlerhilfe</button>
+      <button type="button" id="reloadArena" class="mini">arena.ai neu laden</button>
+    </footer>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

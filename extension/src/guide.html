@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Arena PC Bridge – Einrichtung</title>
+    <link rel="stylesheet" href="guide.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <img src="../icons/icon128.png" alt="" width="44" height="44" />
+        <div>
+          <h1>Arena PC Bridge</h1>
+          <p class="sub">Einrichtung in 3 Minuten – Windows, Opera (Chromium)</p>
+        </div>
+      </header>
+
+      <section class="card highlight">
+        <h2>1 · Starter starten (auf Windows)</h2>
+        <p>
+          Projektordner öffnen → <code>installer\install.cmd</code> anklicken. Danach liegt auf dem
+          Desktop die Verknüpfung <b>„Arena PC Bridge“</b>. Doppelklicken – es öffnet sich ein
+          schwarzes Fenster (darf offen bleiben) und ein Browser-Tab mit dieser Seite.
+        </p>
+        <div class="row">
+          <span class="row-label">Brücke</span>
+          <code id="url">http://127.0.0.1:8765</code>
+        </div>
+        <div class="buttons">
+          <button id="allow" class="primary">Jetzt erlauben (Verbindung freischalten)</button>
+          <button id="test" class="mini">Status testen</button>
+        </div>
+        <pre id="log" class="log">Noch nicht getestet.</pre>
+      </section>
+
+      <section class="card">
+        <h2>2 · Extension in Opera laden</h2>
+        <p>
+          Opera öffnen → Adresszeile <code>opera://extensions</code> → oben rechts
+          <b>Entwicklermodus</b> einschalten → <b>Entpackte Erweiterung laden</b> → den Ordner
+          <code>extension\</code> auswählen. Das Puzzle-Symbol neben der Adresszeile anklicken und
+          „Arena PC Bridge“ anpinnen.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>3 · Auf arena.ai einschalten</h2>
+        <p>
+          <a href="https://arena.ai" target="_blank" rel="noreferrer">arena.ai</a> neu laden. Unter der
+          Chat-Eingabe erscheint die Leiste <b>„Arena PC Bridge: AUS/AN“</b>. Auf <b>AN</b> stellen –
+          fertig. Zusätzlich kannst du in den Extension-Einstellungen (Icon anklicken) festlegen, ob
+          Arena Dateien lesen, schreiben und Befehle ausführen darf.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Funktioniert nicht?</h2>
+        <ul>
+          <li>Kein Schalter unter der Eingabe? Tab mit <b>F12</b> öffnen und nach <code>arena-pc-bridge</code> filtern ODER <code>window.ArenaLocalTools</code> in die Konsole tippen.</li>
+          <li><i>Nicht verbunden?</i> Läuft das Starter-Fenster noch? Diesen Seiten-Tab erneut öffnen und „Jetzt erlauben“ klicken.</li>
+          <li>Port 8765 belegt? Im Fenster der Extension den Port ändern, den Starter mit <code>start.cmd -Port 8899</code> neu starten.</li>
+          <li>Befehle werden abgelehnt? In der Extension „Befehle ausführen“ aktivieren und den Starter neu starten.</li>
+          <li>Nur <code>127.0.0.1</code>: Es verlässt nichts den PC, es kommen nur Anfragen von deinem Browser an.</li>
+        </ul>
+      </section>
+    </main>
+    <script src="guide.js"></script>
+  </body>
+</html>
