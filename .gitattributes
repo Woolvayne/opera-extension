@@ -1,0 +1,22 @@
+# Windows-Starter muessen CRLF behalten, sonst zickt cmd.exe herum.
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# Alles andere mit Unix-Zeilenenden.
+*.sh  text eol=lf
+*.js  text eol=lf
+*.mjs text eol=lf
+*.json text eol=lf
+*.md  text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.svg text eol=lf
+*.txt text eol=lf
+
+# Binaerdateien nicht anfassen.
+*.png binary
+*.ico binary
+*.jpg binary
+*.jpeg binary
+*.zip binary

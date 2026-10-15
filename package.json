@@ -1,0 +1,19 @@
+{
+  "name": "arena-pc-bridge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tests und Build-Werkzeuge fuer die Opera/Chromium-Erweiterung 'Arena PC Bridge'",
+  "scripts": {
+    "test": "node tools/check-contract.mjs && node tools/test-extension.mjs && node tools/test-background.mjs",
+    "icons": "node tools/build-icons.mjs",
+    "zip": "bash tools/build-zip.sh",
+    "test:contract": "node tools/check-contract.mjs",
+    "test:ui": "node tools/test-extension.mjs",
+    "test:tools": "node tools/test-background.mjs"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "jsdom": "^26.1.0"
+  },
+  "license": "MIT"
+}

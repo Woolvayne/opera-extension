@@ -1,0 +1,16 @@
+# Nichts hiervon muss ins Repo
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# Laufzeit-Daten der lokalen Bruecke (Wahlordner)
+.arena-bridge/
+Arena Bridge Workspace/
+
+# Editor
+.vscode/
+.idea/
+
+# Node (nur fuer Tests und die Icon-Erzeugung noetig)
+node_modules/
