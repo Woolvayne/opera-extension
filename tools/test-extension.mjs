@@ -306,6 +306,12 @@ async function testNormalPage() {
   check('Einstellungs-Panel oeffnet', panel && panel.hidden === false);
   const boxes = panel.querySelectorAll('input[type="checkbox"]');
   check('drei Freigabe-Haekchen im Panel', boxes.length === 3, `(sind ${boxes.length})`);
+  check('Prompt-Vorlagen-Knopf vorhanden', !!panel.querySelector('button.wide'));
+  const template = window.ArenaLocalTools.promptTemplate();
+  check('Prompt-Vorlage nennt alle 8 Werkzeuge', ['local_bridge_status','system_info','run_command','list_files','search_files','read_file','write_file','get_file_info'].every((n) => template.includes(n)));
+  check('Prompt-Vorlage nennt die Freigaben', /Freigaben:/.test(template) && /Befehle=/.test(template));
+  check('Prompt-Vorlage endet mit der Aufgabe', /Meine Aufgabe:/.test(template));
+
   if (boxes.length === 3) {
     boxes[2].checked = true;
     boxes[2].dispatchEvent(new window.Event('change', { bubbles: true }));

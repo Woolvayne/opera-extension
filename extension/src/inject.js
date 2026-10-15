@@ -337,6 +337,30 @@
         'Der Schalter liegt zusätzlich in der Extension-Leiste (Icon anklicken). Alles läuft ausschließlich über 127.0.0.1 – nichts wird nach außen gesendet.';
       this.panel.appendChild(foot);
 
+      const btnPrompt = document.createElement('button');
+      btnPrompt.type = 'button';
+      btnPrompt.className = 'wide';
+      const promptLabel = 'Prompt-Vorlage kopieren (nennt Arena die Werkzeuge)';
+      btnPrompt.textContent = promptLabel;
+      btnPrompt.addEventListener('click', async () => {
+        const text = promptTemplate();
+        try {
+          await navigator.clipboard.writeText(text);
+          btnPrompt.textContent = 'Kopiert – jetzt in die Chat-Eingabe einfügen (Strg+V)';
+        } catch (e) {
+          btnPrompt.textContent = 'Kopieren blockiert – Vorlage steht in der Konsole (F12)';
+          try {
+            console.log('[Arena PC Bridge] Prompt-Vorlage:\n' + text);
+          } catch (e2) {
+            /* egal */
+          }
+        }
+        window.setTimeout(() => {
+          btnPrompt.textContent = promptLabel;
+        }, 5000);
+      });
+      this.panel.appendChild(btnPrompt);
+
       const btnGuide = document.createElement('button');
       btnGuide.type = 'button';
       btnGuide.className = 'wide';
@@ -344,6 +368,30 @@
       btnGuide.addEventListener('click', () => toExtension({ type: 'open-guide' }));
       this.panel.appendChild(btnGuide);
     }
+  }
+
+  function promptTemplate() {
+    const s = state.settings;
+    const an = (v) => (v ? 'AN' : 'AUS');
+    return [
+      'Lokal auf meinem PC läuft die "Arena PC Bridge" (nur unter http://127.0.0.1:8765, keine Cloud).',
+      'Verfügbare lokale Werkzeuge:',
+      '  - local_bridge_status  (Verbindung, Ordner, Rechte prüfen)',
+      '  - system_info          (Windows-Version, CPU, RAM, Laufwerke)',
+      '  - list_files           {"path":"", "max_entries":200}  (Ordner auflisten)',
+      '  - search_files         {"query":"*.pdf", "path":""}    (Dateien suchen)',
+      '  - read_file            {"path":"Notizen/heute.md"}   (Textdatei lesen)',
+      '  - write_file           {"path":"bericht.md", "content":"..."} (Datei schreiben)',
+      '  - get_file_info        {"path":"..."}                 (Größe, Datum)',
+      '  - run_command          {"command":"...", "shell":"powershell"} (Befehl ausführen)',
+      'Aktuelle Freigaben: Dateien lesen=' + an(s.allowRead) +
+        ', Dateien schreiben=' + an(s.allowWrite) +
+        ', Befehle=' + an(s.allowCommands) + '.',
+      'Wenn du etwas von meinem PC brauchst: nenne mir bitte genau Werkzeug + Argumente.',
+      'Ich führe es dann aus und schicke dir die Ausgabe zurück.',
+      '',
+      'Meine Aufgabe: '
+    ].join('\n');
   }
 
   const CSS_TEXT = `
@@ -736,6 +784,9 @@ ul.tools li { line-height: 1.4; }
       },
       describe: function () {
         return buildDescriptor();
+      },
+      promptTemplate: function () {
+        return promptTemplate();
       }
     };
 

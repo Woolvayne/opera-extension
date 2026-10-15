@@ -134,7 +134,7 @@ Auf jeder arena.ai-Seite (sobald die Erweiterung aktiv ist) existiert im `<head>
 
 Zusätzlich:
 
-* `window.ArenaLocalTools` – Objekt mit `status()`, `list()`, `call(name, args)`, `describe()`, `endpoint()`.
+* `window.ArenaLocalTools` – Objekt mit `status()`, `list()`, `call(name, args)`, `describe()`, `promptTemplate()`, `endpoint()`.
 * `document.querySelectorAll('#arena-local-tools')` – Discovery über DOM.
 
 **Grenze, ganz offen:** Ob das jeweils ausgewählte Modell diese Beschreibung *automatisch* als Werkzeuge

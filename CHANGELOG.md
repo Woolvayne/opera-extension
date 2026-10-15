@@ -19,6 +19,8 @@ Erste Version.
   * Veröffentlichung der Werkzeuge als JSON-LD (`#arena-local-tools`) + `window.ArenaLocalTools`
   * Einrichtungs- und Fehlerhilfe-Seite inkl. „Jetzt erlauben“-Knopf
   * Aufruf-Verlauf (lokal, löschbar), Port-Umschaltung, „arena.ai neu laden“
+  * **Prompt-Vorlage kopieren** (nennt dem Modell alle Werkzeuge und aktuelle Freigaben)
+  * `ArenaLocalTools.promptTemplate()` für die Konsole
 * **Lokale Brücke (`bridge/server.ps1`)**
   * HTTP-Server nur auf `127.0.0.1`, keine Installation, kein Admin, kein Dienst
   * Host-/Origin-Prüfung, Pflicht-Header, einmalige Zustimmung (`consent.json`)
@@ -37,4 +39,4 @@ Erste Version.
   * `tools/icon-source.svg` + `tools/build-icons.mjs` – Icon-Quelle und PNG-Erzeugung
   * `tools/check-contract.mjs` – prüft Nachrichtentypen, Werkzeugnamen, HTTP-Pfade und Protokollversion
   * `tools/test-extension.mjs` – UI-/JSON-LD-/Werkzeugtest der Seitenskripte mit jsdom
-  * `tools/test-background.mjs` – Werkzeug-Mapping und Freigabelogik des Service Workers (103 Prüfungen)
+  * `tools/test-background.mjs` – Werkzeug-Mapping und Freigabelogik des Service Workers (107 Prüfungen)

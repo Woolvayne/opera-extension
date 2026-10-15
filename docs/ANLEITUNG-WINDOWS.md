@@ -162,6 +162,11 @@ Prüf-Aufträge, die garantiert auf deinem PC landen:
 
 Wenn so etwas klappt, läuft alles. 👍
 
+**Wenn das Modell die Werkzeuge nicht von selbst benutzt:** In der Leiste unter der Chat-Eingabe auf
+**⚙ Werkzeuge** klicken und **„Prompt-Vorlage kopieren“** drücken, dann deine Aufgabe darunter schreiben und
+absenden. Der Text nennt dem Modell die Werkzeuge namentlich, sodass es dir genau sagen kann, was ausgeführt
+werden soll (Details: [FUNKTIONIERT-NICHT.md](FUNKTIONIERT-NICHT.md#f-antworten-sind-da-aber-es-wurden-keine-pc-werkzeuge-benutzt)).
+
 ---
 
 ## Alltag: die 3 Zustände

@@ -107,7 +107,11 @@ Das kann passieren und ist **die wichtigste Einschränkung** dieses Projekts (De
 
 2. **Lokale Agenten/Programme** (Python, Node, PowerShell) gegen die HTTP-API – siehe [TECHNISCH.md](TECHNISCH.md).
 
-**Prompt-Formulierung, die hilft:**
+**1. Einfachster Weg: der Knopf in der Leiste.**
+Unter der Chat-Eingabe auf **⚙ Werkzeuge** klicken und **„Prompt-Vorlage kopieren“** drücken – der Text nennt dem
+Modell alle 8 Werkzeuge und deine Freigaben. Darunter deine Aufgabe schreiben und absenden.
+
+**2. Prompt-Formulierung, die hilft:**
 
 > „Es läuft lokal eine Brücke namens 'Arena PC Bridge'. Werkzeuge: local_bridge_status, system_info, run_command,
 > list_files, search_files, read_file, write_file, get_file_info. Wenn du lokale Informationen brauchst, sage

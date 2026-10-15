@@ -43,6 +43,10 @@ Der Schalter unter der Chat-Eingabe hat drei Zustände:
 | 🟢 **AN · PC verbunden · Port 8765** | Alles läuft: Verbindung zur Brücke steht, Arena darf (je nach Freigabe) lesen, schreiben, Befehle ausführen. |
 | 🟠 **AN · Keine Verbindung …** | Der Schalter ist an, aber der Starter läuft nicht. Das schwarze Fenster auf dem Desktop starten („Arena PC Bridge“). |
 
+Zusätzlich gibt es im Bereich hinter dem Zahnrad-Symbol (⚙) einen Knopf
+**„Prompt-Vorlage kopieren“**: Er legt einen fertigen Text in die Zwischenablage, der Arena die lokalen Werkzeuge
+nennt – hilfreich, weil Arena.ai keine offene API für Seiten-Werkzeuge hat (siehe [Abschnitt 11](#11-wie-es-technisch-funktioniert)).
+
 Erreichbar ist der Schalter außerdem:
 
 * im Erweiterungs-Popup (Symbol in der Opera-Leiste, neben der Adresszeile),
@@ -205,7 +209,31 @@ Ablauf: Arena nutzt die **eingebaute Websuche** (News-Anbieter, Agentur-Meldunge
 
 → `run_command` mit `git` (Standard-Shell ist **PowerShell**, `cmd` ist auch möglich).
 
-### Beispiel 5 – System-Infos
+### Beispiel 5 – Wenn das Modell die Werkzeuge nicht von selbst nutzt
+
+Ein Klick auf **⚙ Werkzeuge → „Prompt-Vorlage kopieren“** legt sowas in die Zwischenablage:
+
+```
+Lokal auf meinem PC läuft die "Arena PC Bridge" (nur unter http://127.0.0.1:8765).
+Verfügbare lokale Werkzeuge:
+  - local_bridge_status  (Verbindung, Ordner, Rechte prüfen)
+  - system_info          (Windows-Version, CPU, RAM, Laufwerke)
+  - list_files           {"path":"", "max_entries":200}
+  - search_files         {"query":"*.pdf", "path":""}
+  - read_file            {"path":"Notizen/heute.md"}
+  - write_file           {"path":"bericht.md", "content":"..."}
+  - get_file_info        {"path":"..."}
+  - run_command          {"command":"...", "shell":"powershell"}
+Aktuelle Freigaben: Dateien lesen=AN, Dateien schreiben=AN, Befehle=AUS.
+Wenn du etwas von meinem PC brauchst: nenne mir bitte genau Werkzeug + Argumente.
+
+Meine Aufgabe:
+```
+
+Diesen Text (vorher noch die Aufgabe darunter schreiben) in den Chat einfügen – damit kennt das Modell die Werkzeuge
+namentlich und kann dir genau sagen, was ausgeführt werden soll. In der Konsole führt `await` den Aufruf direkt aus.
+
+### Beispiel 6 – System-Infos
 
 > „Wie viel Platz ist auf meinen Laufwerken frei und welche Windows-Version habe ich?“
 
@@ -401,7 +429,7 @@ Geprueft werden u. a.:
 * **Werkzeuge** (`tools/test-background.mjs`): Ruft jedes Werkzeug den richtigen Endpunkt mit den richtigen
   Parametern auf? Blockieren Schalter und Freigaben zuverlaessig?
 
-Aktueller Stand: **103 Pruefungen, alle gruen.**
+Aktueller Stand: **107 Prüfungen, alle grün.**
 
 ## 13. Lizenz
 
